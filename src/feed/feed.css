@@ -1,4 +1,30 @@
-.feed-container{
+ul.feed-container{
   display: flex;
   flex-direction: column;
+  list-style-type: none;
+  font-family: 'Roboto Condensed';
+  border-left: 1px solid #ccc;
+  padding: 0;
+  margin: 0 20px;
+}
+.feed-mail-item{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.feed-mail-item{
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ccc;
+  border-top: 0;
+  -webkit-box-shadow: 2px 0px 1px 0px rgba(0,0,0,0.3);
+  text-transform: capitalize;
+}
+.feed-mail-subj{
+  flex: 0.75;
+}
+.feed-mail-sender{
+  flex: 0.25;
+  text-overflow: ellipsis;
+  width: 160px;
+  overflow: hidden;
 }
