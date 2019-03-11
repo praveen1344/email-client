@@ -2,6 +2,8 @@ import React,{ Component } from 'react';
 // import Map from 'Map'
 import './feed.css';
 import Loader from './../loader.js';
+import Checkbox from '@material-ui/core/Checkbox';
+import FeedItem from './feed-item.js';
 
 class MailFeed extends Component {
   constructor(props){
@@ -12,7 +14,6 @@ class MailFeed extends Component {
         isLoaded: false
     };
 
-    this.checkboxIdentifier = this.checkboxIdentifier.bind(this);
   }
 
   componentDidMount(){
@@ -20,7 +21,7 @@ class MailFeed extends Component {
       .then(res => res.json())
       .then((res) => {
         res.map((item)=>(
-          item.isChecked = true
+          item.isChecked = false
         ));
         this.setState({
           isLoaded: true,
@@ -30,9 +31,7 @@ class MailFeed extends Component {
         console.log(this.state.feedData)
       })
   }
-  checkboxIdentifier(identifier){
-    return 'mailfeed-checkbox-' + identifier;
-  }
+
   render(){
     if(!this.state.isLoaded){
       return <Loader/>
@@ -42,14 +41,7 @@ class MailFeed extends Component {
         <ul className="feed-container">
           {
             this.state.feedData.map(item => (
-                <li id={item.id} className='feed-mail-item'>
-                  <div className="feed-mail-checkbox">
-                    <label for={this.checkboxIdentifier(item.id)}></label>
-                    <input type="checkbox" name="mailFeed" value={item.isChecked} id={this.checkboxIdentifier(item.id)}/>
-                  </div>
-                  <div className="feed-mail-sender">{item.from}</div>
-                  <div className="feed-mail-subj">{item.subject}</div>
-                </li>
+              <FeedItem id={item.id} isChecked={item.isChecked} sender={item.from} subject={item.subject}/>
             ))
           }
         </ul>

@@ -13,11 +13,26 @@ ul.feed-container{
   flex-wrap: nowrap;
 }
 .feed-mail-item{
+  position: relative;
   padding: 1rem 2rem;
   border-bottom: 1px solid #ccc;
   border-top: 0;
   -webkit-box-shadow: 2px 0px 1px 0px rgba(0,0,0,0.3);
   text-transform: capitalize;
+  transition: all 0.3s ease-in;
+}
+.feed-mail-item::before{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,0);
+  content: '';
+  background: red;
+  opacity: 0.3;
+  width: 0;
+  height: 100%;
+}
+.feed-mail-item.checked{
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 .feed-mail-subj{
   flex: 0.75;
