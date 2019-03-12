@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-// import Map from 'Map'
 import './feed.css';
 import Loader from './../loader.js';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -28,8 +27,7 @@ class MailFeed extends Component {
           feedData: res,
           error: false
         });
-        console.log(this.state.feedData)
-      })
+      });
   }
 
   render(){
@@ -47,7 +45,7 @@ class MailFeed extends Component {
               <div className="feed-mail-subj">Subject</div>
             </li>
             {
-              this.state.feedData.map(item => (
+              this.state.feedData.map((item) => (
                 <FeedItem id={item.id} isChecked={item.isChecked} sender={item.from} subject={item.subject}/>
               ))
             }

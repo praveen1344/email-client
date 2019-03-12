@@ -26,7 +26,6 @@ class FeedItem extends Component{
   }
   handleClick = (event) => {
     if(event.target.nodeName == "INPUT"){
-      // event.stopPropagation()
       return
     }
     this.setState({
@@ -37,6 +36,7 @@ class FeedItem extends Component{
   render(){
     let feedClass = 'feed-mail-item ';
     feedClass += (this.state.isChecked == true) ? 'checked' : '';
+
     if(this.state.redirect == true){
       return <Redirect to={this.redirectUrl(this.props.id)} />
     }
