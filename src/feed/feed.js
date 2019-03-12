@@ -38,13 +38,21 @@ class MailFeed extends Component {
     }
     else{
       return (
-        <ul className="feed-container">
-          {
-            this.state.feedData.map(item => (
-              <FeedItem id={item.id} isChecked={item.isChecked} sender={item.from} subject={item.subject}/>
-            ))
-          }
-        </ul>
+        <div>
+          <h1>Mail Feed</h1>
+          <ul className="feed-container">
+            <li id="0" className="feed-mail-item feed-mail-header">
+              <div className="feed-mail-checkbox"></div>
+              <div className="feed-mail-sender">Sender</div>
+              <div className="feed-mail-subj">Subject</div>
+            </li>
+            {
+              this.state.feedData.map(item => (
+                <FeedItem id={item.id} isChecked={item.isChecked} sender={item.from} subject={item.subject}/>
+              ))
+            }
+          </ul>
+        </div>
       )
     }
   }
